@@ -12,6 +12,7 @@ import {
   View,
   TextInput,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 
 export default class App extends Component<{}> {
@@ -47,6 +48,15 @@ export default class App extends Component<{}> {
         >
           <Text style={styles.addButtonText}>ADD</Text>
         </TouchableOpacity>
+        <ScrollView style={styles.scrollView}>
+          {
+            this.state.todos.map((todo, index) => (
+              <View key={todo+index} style={styles.todoContainer}>
+                <Text>{todo}</Text>
+              </View>
+            ))
+          }
+        </ScrollView>
       </View>
     );
   }
@@ -72,4 +82,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
   },
+  scrollView : {
+    backgroundColor: '#DDD',
+  },
+  todoContainer : {
+    backgroundColor: "#FFF",
+    padding: 10,
+  }
 });
